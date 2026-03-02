@@ -1,0 +1,102 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Tiêu đề bài tập màu xanh nhạt */
+.assignment-title {
+    background-color: #b3e5fc;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Khung viền đen bao quanh form */
+.form-outer-border {
+    border: 1px solid #000;
+    padding: 40px;
+    background-color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-header {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Flexbox cho hàng đầu tiên */
+.flex-row {
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa 2 ô input */
+    margin-bottom: 15px;
+}
+
+.flex-item {
+    flex: 1; /* Chia đều không gian 50/50 */
+}
+
+/* Định dạng chung cho tất cả ô nhập liệu */
+input[type="text"], 
+input[type="email"], 
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    color: #666;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus {
+    border-color: #80d4ff;
+}
+
+.full-width {
+    margin-bottom: 15px;
+}
+
+textarea {
+    resize: vertical; /* Cho phép kéo dãn chiều cao */
+    margin-bottom: 10px;
+}
+
+/* Flexbox cho phần chân form */
+.form-footer {
+    display: flex;
+    justify-content: space-between; /* Đẩy nút sang trái, text sang phải */
+    align-items: center;
+    margin-top: 10px;
+}
+
+.btn-send {
+    background-color: #81d4fa;
+    color: white;
+    border: 1px solid #4fc3f7;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+.btn-send:hover {
+    background-color: #4fc3f7;
+}
+
+.note {
+    color: #888;
+    font-size: 14px;
+    font-style: italic;
+}

@@ -1,0 +1,95 @@
+/* Reset và font nền tảng */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace; /* Font kiểu chữ máy đánh chữ giống thiết kế */
+    background-color: #fff;
+    color: #444;
+    line-height: 1.6;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    border: 3px solid #add8e6; /* Viền xanh nhạt bao quanh */
+    padding: 60px;
+}
+
+/* Căn giữa tiêu đề lớn */
+.main-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 80px;
+    font-weight: normal;
+}
+
+/* Flexbox để chia 2 cột */
+.content-wrapper {
+    display: flex;
+    gap: 60px; /* Khoảng cách giữa 2 cột */
+    align-items: flex-start;
+}
+
+/* Cột bên trái */
+.left-column {
+    flex: 1;
+}
+
+.testimonial-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 4px;
+    /* Hiệu ứng đổ bóng mờ nhạt giống ảnh */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.testimonial-card h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.author strong {
+    font-size: 14px;
+    display: block;
+}
+
+.role {
+    font-size: 12px;
+    color: #4a90e2; /* Màu xanh cho chức vụ */
+    margin-top: 5px;
+}
+
+/* Cột bên phải */
+.right-column {
+    flex: 1.5; /* Cột phải rộng hơn một chút */
+}
+
+.right-column p {
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsive khi màn hình nhỏ */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    .container {
+        padding: 20px;
+    }
+}
