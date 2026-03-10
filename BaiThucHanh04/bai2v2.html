@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2.2 - Form Đặt Hàng Nâng Cao</title>
+    <style>
+        :root { --err: #e74c3c; --success: #27ae60; --primary: #2980b9; }
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        input.invalid { border-color: var(--err); }
+        .error-msg { color: var(--err); font-size: 13px; margin-top: 5px; display: block; min-height: 18px; }
+        .total-price { font-size: 1.2rem; color: var(--primary); font-weight: bold; margin: 10px 0; }
+        .char-count { text-align: right; font-size: 12px; color: #666; }
+        .char-count.limit { color: var(--err); font-weight: bold; }
+        
+        /* Modal Xác Nhận */
+        #confirmBox { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.5); justify-content: center; align-items: center; 
+        }
+        .modal { background: #fff; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; }
+        .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+        button { flex: 1; padding: 10px; cursor: pointer; border: none; border-radius: 5px; font-weight: bold; }
+        .btn-confirm { background: var(--success); color: white; }
+        .btn-cancel { background: #95a5a6; color: white; }
+        .btn-submit { background: var(--primary); color: white; width: 100%; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="orderForm" novalidate>
+        <h2>Đơn Đặt Hàng</h2>
+
+        <div class="form-group">
+            <label>Sản phẩm</label>
+            <select id="product">
+                <option value="">-- Chọn sản phẩm --</option>
+                <option value="Laptop">Laptop (20.000.000đ)</option>
+                <option value="iPhone">iPhone (25.000.000đ)</option>
+                <option value="Tai nghe">Tai nghe (2.000.000đ)</option>
+            </select>
+            <small class="error-msg" id="product-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label>Số lượng (1-99)</label>
+            <input type="number" id="quantity" value="1">
+            <small class="error-msg" id="quantity-err"></small>
+        </div>
+
+        <div class="total-price">Tổng tiền: <span id="displayTotal">0đ</span></div>
+
+        <div class="form-group">
+            <label>Ngày giao hàng</label>
+            <input type="date" id="deliveryDate">
+            <small class="error-msg" id="deliveryDate-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ nhận hàng</label>
+            <input type="text" id="address" placeholder="Ít nhất 10 ký tự">
+            <small class="error-msg" id="address-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label>Ghi chú</label>
+            <textarea id="note" rows="3" placeholder="Yêu cầu thêm..."></textarea>
+            <div class="char-count" id="charCount">0/200</div>
+            <small class="error-msg" id="note-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label>Thanh toán</label>
+            <input type="radio" name="payment" value="COD"> COD 
+            <input type="radio" name="payment" value="Chuyển khoản"> Chuyển khoản
+            <small class="error-msg" id="payment-err"></small>
+        </div>
+
+        <button type="submit" class="btn-submit">Đặt Hàng Ngay</button>
+    </form>
+</div>
+
+<div id="confirmBox">
+    <div class="modal">
+        <h3>Xác nhận đơn hàng</h3>
+        <div id="summary"></div>
+        <div class="modal-btns">
+            <button class="btn-confirm" id="finalOk">Xác nhận</button>
+            <button class="btn-cancel" id="finalCancel">Hủy</button>
+        </div>
+    </div>
+</div>
+
+<script src="b2v2.js"></script>
+</body>
+</html>

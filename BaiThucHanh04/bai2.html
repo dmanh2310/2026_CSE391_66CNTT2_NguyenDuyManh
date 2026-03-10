@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2.1 - Form Đăng Ký</title>
+    <style>
+        :root {
+            --error-color: #ff4d4d;
+            --success-color: #2ecc71;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 { text-align: center; color: #333; margin-bottom: 1.5rem; }
+
+        .form-group { margin-bottom: 15px; position: relative; }
+
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input.invalid { border-color: var(--error-color); background-color: #fffafa; }
+
+        .error-msg {
+            color: var(--error-color);
+            font-size: 12px;
+            margin-top: 4px;
+            display: block;
+            min-height: 15px;
+        }
+
+        .radio-group { display: flex; gap: 20px; padding: 5px 0; }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover { background-color: #2980b9; }
+
+        #successMsg {
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed var(--success-color);
+            border-radius: 8px;
+            background: #f0fff4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="registerForm" novalidate>
+        <h2>Đăng Ký Tài Khoản</h2>
+        
+        <div class="form-group">
+            <label for="fullname">Họ và tên</label>
+            <input type="text" id="fullname" placeholder="Nhập họ và tên...">
+            <small class="error-msg" id="fullname-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="name@domain.com">
+            <small class="error-msg" id="email-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="text" id="phone" placeholder="Ví dụ: 0987654321">
+            <small class="error-msg" id="phone-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" placeholder="Tối thiểu 8 ký tự, có hoa, thường, số">
+            <small class="error-msg" id="password-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Xác nhận mật khẩu</label>
+            <input type="password" id="confirmPassword">
+            <small class="error-msg" id="confirmPassword-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label>Giới tính</label>
+            <div class="radio-group">
+                <label style="font-weight: normal;"><input type="radio" name="gender" value="Nam"> Nam</label>
+                <label style="font-weight: normal;"><input type="radio" name="gender" value="Nữ"> Nữ</label>
+            </div>
+            <small class="error-msg" id="gender-err"></small>
+        </div>
+
+        <div class="form-group">
+            <label style="font-weight: normal; display: flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="terms"> Tôi đồng ý với các điều khoản
+            </label>
+            <small class="error-msg" id="terms-err"></small>
+        </div>
+
+        <button type="submit">Đăng Ký</button>
+    </form>
+
+    <div id="successMsg" style="display: none;"></div>
+</div>
+
+<script src="b2.js"></script>
+</body>
+</html>
